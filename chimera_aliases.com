@@ -139,7 +139,7 @@ alias ^soft_mask vop threshold $1 minimum $2 set 0 maximum $2 setmaximum 1 model
 # adjust clipping symmetrically around the center of rotation
 #Usage: symclip
 #alias symclip cofr view; clip on; clip hither $1 fromCenter true; clip yon -$1 fromCenter true
-alias symclip cofr fixed; clip hither $1 fromCenter true; clip yon -$1 fromCenter true; cofr view; clip on
+alias symclip cofr view; cofr fixed; clip hither $1 fromCenter true; clip yon -$1 fromCenter true; cofr view; clip on
 
 #Show CA trace with sidechains 
 #Usage: ca_and_sidechains model_id
