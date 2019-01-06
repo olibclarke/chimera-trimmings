@@ -7,3 +7,5 @@ Put `chimera_aliases.com` somehere on your system and specify it as a file to re
 Adds a bunch of extra commands of variable utility.
 
 I like `symclip` - to symmetrically clip with respect to the center of rotation, `cootmode` to make a Coot-like density representation for the specified volume, and `cofron` to make moving/rotating more Coot-like, and `centersel`, which moves the center of rotation to the current selection.
+
+`cootmode` and `cootmode_wire` make the selected map a nice blue mesh, with mesh lighting and depth cueing etc adjusted.
