@@ -34,7 +34,6 @@ alias ^coil setattr r isHelix false sel; setattr r isSheet false sel
 #Usage: fitsel #map_id
 alias ^fitsel fitmap sel $1 movewholemolecules false
 
-#Fits each domain of ryr to a map.
 
 
 #selects by color. Specify two word colors as forest_green.
@@ -54,10 +53,6 @@ alias ^copysel_single_model write selected $1 ~/tmp.pdb ; open ~/tmp.pdb
 #Sets all maps to grid step 1
 alias ^volstep1 volume # step 1
 
-#Set maps to various thresholds
-alias ^ryr_level1 volume # fastenclosevolume 2000000
-alias ^ryr_level2 volume # fastenclosevolume 1000000
-alias ^ryr_level3 volume # fastenclosevolume 500000
 
 #Measure rotation between two domains.
 #Usage: domain_rotation sel_for_domain1 sel_for_domain_2
@@ -97,13 +92,6 @@ alias ^cootmode_off volume $1 style surface capfaces true color "cornflower blue
 
 alias ^cootmode_white volume $1 capfaces false style mesh meshlighting false squaremesh false color "navy blue" step 1; sop cap off; set depthCue; set dcStart 0.2; set dcEnd 1; background solid white; cofron
 
-#Creates named selections corresponding to RyR domains.
-#Usage: ryr_namesel #model_id
-alias ^ryr_namesel sel $1&:.B&:1-628; namesel ntd; sel $1&:.B&:1-209; namesel ntda; sel $1&:.B&:210-394; namesel ntdb; sel $1&:.B&:395-628; namesel nsol; namesel ntdc; sel $1&:629-1656&:.B&~:850-1055; namesel spry123 ; namesel spry; sel $1&:.B&:634-849; namesel spry1; sel $1&:.B&:1070-1240; namesel spry2; sel $1&:.B&:1244-1656; namesel spry3; sel $1&:.B&:1244-1656; sel $1&:.B&:850-1055; namesel ry12; sel $1&:.B&:2734-2939; namesel ry34; sel $1&:.B&:1657-2144; namesel jsol; sel $1&:.B&:2145-3613&~:2734-2939; namesel bsol; sel $1&:.B&:3639-4253; namesel csol; sel $1&:.B&:3614-3638; namesel bclinker; namesel bc_linker; namesel cslinker; namesel cs_linker; sel $1&:.B&:4063-4135; namesel ef12; namesel ef; namesel efh; sel $1&:.B&:4063-4101; namesel ef1; namesel efh1; sel $1&:.B&:4101-4135; namesel ef2; namesel efh2; sel :3639-&:.B&$1; namesel core; sel $1&:.B&:1-3613; namesel shell; sel $1&:.B&:4177-4253; namesel taf; sel $1&:.B&:4540-4937; namesel tm; sel $1&:.B&:4821-4937; namesel pore; sel $1&:.B&:4540-4820; namesel pvsd; sel $1&:.B&:4938-4956; namesel s6c; sel $1&:.B&:4957-; namesel ctd; sel $1&:.B&:4664-4786; namesel s23; sel $1&:.A; namesel fkbp; namesel cs2; sel $1&:.F; namesel cam; sel :unsel
-
-#Colors ryr by domain.
-#Usage: ryr_color #model_id
-alias ^ryr_color color ntda ntda; color ntdb ntdb; color nsol nsol; color spry1 spry1; color spry2 spry2; color ry12 ry12; color spry3 spry3; color jsol jsol; color fkbp fkbp; color bsol bsol; color ry34 ry34; color csol csol; color ef12 ef12; color taf taf; color pvsd pvsd; color pore pore|s6c; color ctd ctd; sel helix|strand; ribrepr edged sel; ribinsidecolor gray; ~sel; ~disp
 
 #Makes binary mask for map at entered contour
 #Usage: binary_mask #map_id contour
@@ -214,10 +202,6 @@ alias ^window_1080p windowsize 1920 1080
 #set window size to 480p
 #Usage: window_480p
 alias ^window_480p windowsize 640 480
-
-#Make labeled axes for helices in RyR1.
-#Usage: ryr_pore_measure #model
-alias ^ryr_pore_measure sel $1&:.B&:4914-4934&@CA; define axis radius 1 name s6 sel; label_sel "S6"; sel $1&:.B&:4935-4955&@CA; define axis radius 1 name s6c sel; label_sel "S6c"; sel $1&:.B&:4821-4831&@CA; define axis radius 1 name jm3 sel; label_sel "JM3"; sel $1&:.B&:4773-4785&@CA; define axis radius 1 name jm2 sel; label_sel "JM2"; sel $1&:.B&:4807-4818&@CA; define axis radius 1 name s4 sel; label_sel "S4"; sel $1&:.B&:4543-4557&@CA; define axis radius 1 name jm1 sel; label_sel "JM1"; sel $1&:.B&:4644-4662&@CA; define axis radius 1 name s2 sel; label_sel "S2"; sel $1&:.B&:4666-4681&@CA; define axis radius 1 name s2c sel; label_sel "S2c"; sel $1&:.B&:4560-4576&@CA; define axis radius 1 name s1 sel; label_sel "S1"; sel $1&:.B&:4787-4804&@CA; define axis radius 1 name s3 sel; label_sel "S3"; sel $1&:.B&:4835-4855&@CA; define axis radius 1 name s5 sel; label_sel "S5"; sel $1&:.B&:4881-4891&@CA; define axis radius 1 name pore_helix sel; label_sel "PH"; sel $1&:.B&:4208-4224&@CA; define axis radius 1 name TaF1 sel; label_sel "TaFα1"; sel $1&:.B&:4229-4251&@CA; define axis radius 1 name TaF2 sel; label_sel "TaFα2"; sel :4824&@CA&$1; define plane name membrane sel; sel :unsel
 
 
 #Save session with maps. saves in home dir with directory name same as session.
