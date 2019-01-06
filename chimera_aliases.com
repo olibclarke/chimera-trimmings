@@ -1,35 +1,18 @@
-open ~/Dropbox/chimera_startup/chimera_commands.py
-open ~/Dropbox/chimera_startup/setzoom.py
-#Custom ryr colors
-
-colordef ntda "navy blue"
-colordef ntdb "cyan"
-colordef nsol "dodger blue"
-colordef spry1 "deep pink"
-colordef ry12 "rosy brown"
-colordef spry2 "dark magenta"
-colordef spry3 "purple"
-colordef jsol "dark slate gray"
-colordef bsol "spring green"
-colordef fkbp "chartreuse"
-colordef ry34 "dark cyan"
-colordef csol "khaki"
-colordef ef12 "coral"
-colordef taf "gold"
-colordef pvsd "orange"
-colordef pore "red"
-colordef ctd "dark red"
-colordef invisible 0 0 0 0
-colordef transparent 0 0 0 0
-colordef dattilo "#F1A758"
-colordef charcoal "#2f682f682f68"
-
 #Pride rainbow
-alias ^pride_rainbow rainbow "#BC00FF","#4A0082","#0000FF","#128301","#FFFF0B","#FE5E06","#FD0006"
+alias ^rainbow_pride rainbow "#BC00FF","#4A0082","#0000FF","#128301","#FFFF0B","#FE5E06","#FD0006"
+
+alias ^rainbow_viridis rainbow "#440154","#481567","#482677","#453781","#404788","#39568C","#33638D","#2D708E","#287D8E","#238A8D","#1F968B","#20A387","#29AF7F","#3CBB75","#55C667","#73D055","#95D840","#B8DE29","#DCE319","#FDE725"
+
+alias ^rainbow_magma rainbow "#000005","#080616","#110B2D","#1E0848","#300060","#43006A","#57096E","#6B116F","#81176D","#981D69","#B02363","#C92D59","#E03B50","#ED504A","#F66B4D","#FA8657","#FBA368","#FBC17D","#FCDF96","#FCFFB2"
+alias ^rainbow_magma_sse rainbow sse "#000005","#080616","#110B2D","#1E0848","#300060","#43006A","#57096E","#6B116F","#81176D","#981D69","#B02363","#C92D59","#E03B50","#ED504A","#F66B4D","#FA8657","#FBA368","#FBC17D","#FCDF96","#FCFFB2"
+
+alias scolor_map_magma scolor $1 volume $1 perPixel true cmap 0,#000005:0.05,#080616:0.1,#110B2D:0.15,#1E0848:0.2,#300060:0.25,#43006A:0.3,#57096E:0.35,#6B116F:0.4,#81176D:0.45,#981D69:0.5,#B02363:0.55,#C92D59:0.6,#E03B50:0.65,#ED504A:0.7,#F66B4D:0.75,#FA8657:0.8,#FBA368:0.9,#FBC17D:0.95,#FCDF96:1,#FCFFB2 cmapRange full
+
+alias scolor_map_magma_range scolor $1 volume $1 perPixel true cmap 0,#000005:0.05,#080616:0.1,#110B2D:0.15,#1E0848:0.2,#300060:0.25,#43006A:0.3,#57096E:0.35,#6B116F:0.4,#81176D:0.45,#981D69:0.5,#B02363:0.55,#C92D59:0.6,#E03B50:0.65,#ED504A:0.7,#F66B4D:0.75,#FA8657:0.8,#FBA368:0.9,#FBC17D:0.95,#FCDF96:1,#FCFFB2 cmapRange $2,$3
+
+alias ^rainbow_magma_helix rainbow helix "#000005","#080616","#110B2D","#1E0848","#300060","#43006A","#57096E","#6B116F","#81176D","#981D69","#B02363","#C92D59","#E03B50","#ED504A","#F66B4D","#FA8657","#FBA368","#FBC17D","#FCDF96","#FCFFB2"
 
 alias ^color_by_hydrophobicity color orange red :cys,ile,leu,val,tyr,met,phe,trp,ala&$1; color cornflower blue :ser,asn,gln,his,arg,lys,glu,asp,thr&$1; color green :pro&$1; color magenta :gly&$1; color gray :unk&$1; color gray ~protein&$1
-
-alias ^sel_incomplete runscript ~/Dropbox/chimera_startup/findIncomplete.py
 
 alias ^pride_rainbow_helix rainbow helix "#BC00FF","#4A0082","#0000FF","#128301","#FFFF0B","#FE5E06","#FD0006" 
 
@@ -46,20 +29,13 @@ alias ^helix setattr r isHelix true sel; setattr r isSheet false sel
 alias ^strand setattr r isHelix false sel; setattr r isSheet true sel
 alias ^coil setattr r isHelix false sel; setattr r isSheet false sel
 
-#Assigns ramachandran probability to B-factor column (requires additional python script)
-alias ^rama2bfac ramachandran assign $1 ; setattr r ramaProb 1.0 :/^ramaProb ; open ~/Dropbox/chimera_startup/b_fac2rama.py
 
 #Fits selection to map.
 #Usage: fitsel #map_id
 alias ^fitsel fitmap sel $1 movewholemolecules false
 
 #Fits each domain of ryr to a map.
-#Usage: fit_ryr #map_id #model_id
-alias ^fit_ryr fitmap :1-2144&$2&:.B $1 movewholemolecules false ; fitmap :2145-3613&:.B&$2 $1 movewholemolecules false ; fitmap :2145-2710&:.B&$2 $1 movewholemolecules false ; fitmap :2942-3613&:.B&$2 $1 movewholemolecules false ; fitmap :1-628&:.B&$2 $1 movewholemolecules false ; fitmap :629-1656&:.B&$2 $1 movewholemolecules false ; fitmap :1657-2144&:.B&$2 $1 movewholemolecules false ; fitmap :1-392&:.B&$2 $1 movewholemolecules false ; fitmap :394-628&:.B&$2 $1 movewholemolecules false ; fitmap :852-1055&:.B&$2 $1 movewholemolecules false ; fitmap :3614-4176&:.B&$2 $1 movewholemolecules false ; fitmap :4177-4253&:.B&$2 $1 movewholemolecules false ; fitmap :4063-4135&:.B&$2 $1 movewholemolecules false ; fitmap :zn|:atp|:ca|:4540-&:.B&$2 $1 movewholemolecules false; fitmap :4540-4819&:.B&$2 $1 movewholemolecules false ; fitmap :4662-4786&:.B&$2 $1 movewholemolecules false ; fitmap :4820-4933&:.B&$2 $1 movewholemolecules false ; fitmap :zn|:atp|:ca|:4934-&:.B&$2 $1 movewholemolecules false ; fitmap :zn|:atp|:ca|:4957-&:.B&$2 $1 movewholemolecules false ; fitmap :.A&$2 $1 movewholemolecules false
 
-#Makes colored molmaps and specified resolution for each ryr domain.
-#Usage: ryr_molmap #model_id resolution
-alias ^ryr_molmap molmap :1-209&:.B&$1 $2 gridspacing 2 modelid $1.1 ; color cornflower blue $1.1 ; setattr M name NTD-A $1.1 ; molmap :210-393&:.B&$1 $2 gridspacing 2 modelid $1.2 ; color medium blue $1.2 ; setattr M name NTD-B $1.2 ; molmap :394-628&:.B&$1 $2 gridspacing 2 modelid $1.3 ; setattr M name NTD-C $1.3 ; color navy blue $1.3 ; molmap :629-1656&:.B&$1&~:850-1055 $2 gridspacing 2 modelid $1.4 ; setattr M name SPRY123 $1.4 ; color cyan $1.4 ; molmap :850-1055&:.B&$1 $2 gridspacing 2 modelid $1.5 ;setattr M name RY12 $1.5 ; color dark slate gray $1.5 ; molmap :1657-2144&:.B&$1 $2 gridspacing 2 modelid $1.6 ; setattr M name JSol $1.6 ; color khaki $1.6 ; molmap :2145-3613&:.B&$1&~:2734-2939 $2 gridspacing 2 modelid $1.7 ; setattr M name BSol $1.7 ; color forest green $1.7 ; molmap :2734-2939&:.B&$1 $2 gridspacing 2 modelid $1.8 ; setattr M name RY34 $1.8 ; color salmon $1.8 ; molmap :3614-4253&:.B&$1 $2 gridspacing 2 modelid $1.9 ; setattr M name CSol $1.9 ; color medium purple $1.9 ; molmap :4063-4135&:.B&$1 $2 gridspacing 2 modelid $1.10 ; setattr M name EF12 $1.10 ; color magenta $1.10 ; molmap :4177-4253&:.B&$1 $2 gridspacing 2 modelid $1.11 ; setattr M name TaF $1.11 ; color medium purple $1.11 ; molmap :4541-4820&:.B&$1 $2 gridspacing 2 modelid $1.12 ; setattr M name pVSD $1.12 ; color firebrick $1.12 ; molmap :4662-4786&:.B&$1 $2 gridspacing 2 modelid $1.13 ; setattr M name S23_domain $1.13 ; color firebrick $1.13 ; molmap :4821-4956&:.B&$1 $2 gridspacing 2 modelid $1.14 ; setattr M name Pore_domain $1.14 ; color orange $1.14 ; molmap :4957-&:.B&$1 $2 gridspacing 2 modelid $1.15 ; setattr M name CTD $1.15 ; color red $1.15 ; molmap :.A&$1 $2 gridspacing 2 modelid $1.16 ; setattr M name Cs2 $1.16 ; color gold $1.16 ; molmap :.C&$1 $2 gridspacing 2 modelid $1.17 ; setattr M name TMx $1.17 ; color black $1.17; molmap :.F&$1 $2 gridspacing 2 modelid $1.18 ; setattr M name CaM $1.17 ; color plum $1.18
 
 #selects by color. Specify two word colors as forest_green.
 #Usage: selbycolor color
@@ -96,10 +72,11 @@ alias ^color_by_phi_psi sel :/psi>=-90&:/psi<=30&:/phi>=-135&:/phi<=0; color blu
 
 #Calculates a local difference map by extracting density around a selection (5A buffer) aligned to the two maps, aligning the extracted densities and subtracting one from the other.
 #Usage: local_diff_map sel #map_id1 #map_id2
-alias ^local_diff_map savepos tmp; close #1001,1002,1003,1004; fitmap $1 $2; vop zone $2 $1 5 modelid 1000 minimalbounds true; fitmap $1 $3; vop zone $3 $1 5 modelid 1001 minimalbounds true; fitmap #1001 #1000; vop resample #1001 ongrid #1000 modelid 1002; vop subtract #1000 #1002 modelid 1003 minrms true; volume #1003 step 1 ; split_diff_map #1003 #1004 ; close #1000,1001,1002,1003 ; reset tmp
 
-#As above, with a 10A buffer.
-alias ^local_diff_map_10 fitmap $1 $2; vop zone $2 $1 10 modelid 1000 minimalbounds true; fitmap $1 $3; vop zone $3 $1 10 modelid 1001 minimalbounds true; fitmap #1001 #1000; vop resample #1001 ongrid #1000 modelid 1002; vop subtract #1000 #1002 modelid 1003 minrms true; volume #1003 step 1 ; split_diff_map #1003 #1004 ; close #1000 #1001 #1002 ; fitmap $1 $2
+alias ^local_diff_map savepos tmp; close #1001,1002,1003,1004,1005; fitmap $1 $2; vop zone $2 $1 5 modelid 1000 minimalbounds true; fitmap $1 $3; vop zone $3 $1 5 modelid 1001 minimalbounds true; vop scale #1000 sd 0.1 modelid 1002; vop scale #1001 sd 0.1 modelid 1003; fitmap #1003 #1002; vop resample #1003 ongrid #1002 modelid 1004; vop subtract #1002 #1004 modelid 1005 minrms true; volume #1005 step 1 ; split_diff_map #1005 #1006 ; close #1000,1001,1002,1003,1004,1005 ; reset tmp
+
+alias ^local_diff_map_10 savepos tmp; close #1001,1002,1003,1004,1005; fitmap $1 $2; vop zone $2 $1 10 modelid 1000 minimalbounds true; fitmap $1 $3; vop zone $3 $1 10 modelid 1001 minimalbounds true; vop scale #1000 sd 0.1 modelid 1002; vop scale #1001 sd 0.1 modelid 1003; fitmap #1003 #1002; vop resample #1003 ongrid #1002 modelid 1004; vop subtract #1002 #1004 modelid 1005 minrms true; volume #1005 step 1 ; split_diff_map #1005 #1006 ; close #1000,1001,1002,1003,1004,1005 ; reset tmp
+
 
 
 #Set or unset crosshairs at center of rotation
@@ -134,7 +111,7 @@ alias ^binary_mask vop threshold $1 minimum $2 set 0 maximum $2 setmaximum 1 mod
 
 # Makes binary mask at given threshold, then applies 10 pixel soft edge.
 #Usage: soft_mask #map_id contour
-alias ^soft_mask vop threshold $1 minimum $2 set 0 maximum $2 setmaximum 1 modelID 2000; vop falloff #2000 modelID #2001; volume #2001 level 0.5; close #2000
+alias ^soft_mask vop threshold $1 minimum $2 set 0 maximum $2 setmaximum 1 modelID 2000; vop falloff #2000 iterations 20 modelID #2001; volume #2001 level 0.5; close #2000
 
 # adjust clipping symmetrically around the center of rotation
 #Usage: symclip
@@ -161,6 +138,9 @@ alias ^dispside_sphere ~sel; ac mc; ~disp sel; sel sel z<$1; sel side chain/base
 #Show smooth trace with sidechains
 alias ^ca_and_sidechains_smooth ~ribbon $1; ~disp $1; sel @CA&protein; repr stick sel; disp sel; setattr M stickScale 1.0 $1;  sel side chain/base.without CA/C1'; repr stick sel; disp sel; setattr b radius 0.1 sel; color byhet $1; sel @CA|@CB; repr stick sel; setattr b radius 0.1 sel; sel @CD|@N&:pro; disp sel; repr stick sel; setattr b radius 0.1 sel; ~sel; ribbon $1; ribscale licorice; ribspline spec $1 cardinal
 
+alias ^wire_ca ~rib $1; ~disp $1; repr wire $1; disp $1&@CA&protein
+
+alias ^wire_all ~rib $1; repr wire $1; disp $1; repr bs $1&solvent; repr bs $1&ions
 
 #Center on selected atoms and update CofR
 #Usage centersel
@@ -250,9 +230,9 @@ alias ^thin_axis define axis raiseTool false radius 0.1 color yellow sel&@CA
 
 #Makes a pseudoprojection style view of the given volume
 #Usage: volume_project #map_id
-alias ^volume_project background solid black; volume $1 step 1 sdlevel 0,0 color white sdlevel 20,1 color white style solid projectionMode 3d maximumIntensityProjection true btCorrection true linearInterpolation true; unset depthCue
+alias ^volume_project background solid black; volume $1 step 1 sdlevel 0,0 color white sdlevel 20,1 color white style solid projectionMode auto maximumIntensityProjection true btCorrection true linearInterpolation true; unset depthCue
 
-alias ^volume_project_rainbow background solid black; volume $1 level 0,0.225 color red level 0.05,0.625 color orange level 0.1,0.825 color yellow level 0.15,0.925 color green level 0.2,0.975 color cyan level 0.25,1 color blue style solid btCorrection true linearInterpolation true; unset depthCue
+alias ^volume_project_rainbow background solid black; volume $1 sdlevel 0,0.225 color red sdlevel 4,0.625 color orange sdlevel 8,0.825 color yellow sdlevel 12,0.925 color green sdlevel 16,0.975 color cyan sdlevel 20,1 color blue style solid btCorrection true linearInterpolation true maximumintensityprojection false projectionmode auto; unset depthCue
 
 
 
