@@ -72,7 +72,9 @@ alias ^local_diff_map savepos tmp; close #1001,1002,1003,1004,1005; fitmap $1 $2
 
 alias ^local_diff_map_10 savepos tmp; close #1001,1002,1003,1004,1005; fitmap $1 $2; vop zone $2 $1 10 modelid 1000 minimalbounds true; fitmap $1 $3; vop zone $3 $1 10 modelid 1001 minimalbounds true; vop scale #1000 sd 0.1 modelid 1002; vop scale #1001 sd 0.1 modelid 1003; fitmap #1003 #1002; vop resample #1003 ongrid #1002 modelid 1004; vop subtract #1002 #1004 modelid 1005 minrms true; volume #1005 step 1 ; split_diff_map #1005 #1006 ; close #1000,1001,1002,1003,1004,1005 ; reset tmp
 
-
+#locall aligns two maps within a given radius of the center of rotation. Assumes maps are already more or less aligned.
+#Usage: local_fitmap #mapid1 #mapid2 radius
+alias ^local_fitmap ~sel; ac mc; vop zone $2 sel $3 modelid 10000 minimalbounds true; fitmap $1 #10000; close #10000; close sel; modeldisplay $2
 
 #Set or unset crosshairs at center of rotation
 alias ^cofron set showcofr; cofr view; clip on
