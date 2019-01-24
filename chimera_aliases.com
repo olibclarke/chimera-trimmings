@@ -34,6 +34,10 @@ alias ^coil setattr r isHelix false sel; setattr r isSheet false sel
 #Usage: fitsel #map_id
 alias ^fitsel fitmap sel $1 movewholemolecules false
 
+#duplicates and recolors map
+#Usage: duplicate_map #mapid
+alias ^duplicate_map vop add $1 modelid 999; color orange #999; modeldisplay $1
+
 
 
 #selects by color. Specify two word colors as forest_green.
