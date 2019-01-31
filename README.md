@@ -22,4 +22,4 @@ I like `symclip` - to symmetrically clip with respect to the center of rotation,
 
 `toggle_display` (usage: toggle_display #modelid1 #modelid2) will switch between showing model 1 and model 2 a set number of times. Useful for comparing aligned maps, e.g. different 3D classes.
 
-
+`cootmode_wire` (usage: cootmode_wire #mapid) will change the selected map to a blue mesh with meshlighting off, depth cueing adjusted, and surface caps off; it will also change all models to yellow colorbyhet wire representation, to mimick Coot for easier visual inspection of map/model fit.
