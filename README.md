@@ -1,6 +1,6 @@
 # chimera-trimmings
 
-Custom settings and aliases for UCSF Chimera.
+Custom settings and aliases for UCSF Chimera. Those listed below are ones I frequently use, but there are many others (inspect the script for more details)
 
 Put `chimera_aliases.com` somehere on your system and specify it as a file to read at startup (Favorites...Preferences...Command Line).
 
