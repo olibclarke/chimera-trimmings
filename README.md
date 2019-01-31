@@ -20,4 +20,6 @@ I like `symclip` - to symmetrically clip with respect to the center of rotation,
 
 `activate_all` will activate all models for motion.
 
+`toggle_display` (usage: toggle_display #modelid1 #modelid2) will switch between showing model 1 and model 2 a set number of times. Useful for comparing aligned maps, e.g. different 3D classes.
+
 
