@@ -24,7 +24,7 @@ alias ^normalize_to_rms vop scale $1 rms 1 modelID $2; close $1; volume $2 capfa
 #Usage: split_diff_map #map_id_in #map_id_out
 alias ^split_diff_map vop scale $1 rms 1 modelID $2; close $1; volume $2 capfaces false style mesh meshlighting false squaremesh false level -3 color #da1200000000 level 3 color #0000bda00000; sop cap off; set depthCue; set dcStart 0.2; set dcEnd 1
 
-alias ^display_only ~modeldisp all; modeldisp $1
+alias ^display_only ~modeldisp #; modeldisp $1
 
 #Helix, strand and coil assign the secondary structure of the current selection as indicated.
 alias ^helix setattr r isHelix true sel; setattr r isSheet false sel
