@@ -27,6 +27,8 @@ alias ^split_diff_map vop scale $1 rms 1 modelID $2; close $1; volume $2 capface
 alias ^display_only ~modeldisp #; modeldisp $1
 alias ^display_all modeldisp #
 
+alias ^toggle_display display_only $1; wait  50; display_only $2; wait  50; display_only $1; wait  50; display_only $2; wait  50; display_only $1; wait  50; display_only $2; display_only $1; wait  50; display_only $2; wait  50; display_only $1; wait  50; display_only $2; wait  50; display_only $1; wait  50; display_only $2
+
 #activates indicated model (use number, no #) for motion
 alias ^activate_only ~select all; select $1
 alias activate_all select all
